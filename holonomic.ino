@@ -57,7 +57,7 @@ void loop() {
 	if (!isOut)
 	{
 		float scaling  = 255.0 / 7.0; 
-		int velx = -scaling * GamePad.getXaxisData();
+		int velx = scaling * GamePad.getXaxisData();
 		int vely = scaling * GamePad.getYaxisData();
 
     Serial.print("velx: ");
