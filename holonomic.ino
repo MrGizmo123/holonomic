@@ -56,25 +56,14 @@ void loop() {
 	/* Only move the bot if it is not out */
 	if (!isOut)
 	{
-		float scaling  = 255.0 / 7.0; 
-		int velx = scaling * GamePad.getXaxisData();
-		int vely = scaling * GamePad.getYaxisData();
-
-    Serial.print("velx: ");
-    Serial.print(velx);
-    Serial.print(", vely: ");
-    Serial.println(vely);
+		double scaling  = 255.0 / 7.0; 
+		double velx = scaling * GamePad.getXaxisData();
+		double vely = scaling * GamePad.getYaxisData();
 		
 		move_in_direction(velx, vely);
 	}
 
-	/* this condition is only for debugging purpose 
-	 * TODO: remove in final version */
-	if (GamePad.isStartPressed())
-	{
-		isOut = false;							/* bot is again in the game */
-		digitalWrite(LED_PIN, LOW);	/* turn led off */
-    Serial.println("NOT OUT");
-	}
+  if(isOut)
+   move_in_direction(0, 0);
 	
 }
